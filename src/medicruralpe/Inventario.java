@@ -28,6 +28,11 @@ public class Inventario {
                     "El recurso no puede ser nulo."
             );
         }
+        if (recurso.getResponsableProtegido() == null) {
+            throw new IllegalArgumentException(
+                    "Debe asignarse un responsable al recurso."
+            );
+        }
 
         if (buscarPorCodigo(recurso.getCodigo()) != null) {
             throw new IllegalArgumentException(
