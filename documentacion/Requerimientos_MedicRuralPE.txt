@@ -1,0 +1,75 @@
+# Requerimientos y criterios de MedicRural-PE
+
+## Contexto
+
+MedicRural-PE toma como referencia al Centro de Salud Alfa y Omega,
+ubicado en Ate, Lima, para plantear un escenario académico simulado
+relacionado con la gestión de medicamentos e insumos médicos.
+
+Los datos utilizados por el sistema son ficticios y no representan
+información operativa real del establecimiento.
+
+## Requerimientos funcionales
+
+RF01. El sistema debe permitir registrar medicamentos e insumos médicos
+indicando código, nombre, stock actual, stock mínimo y presentación o
+unidad de medida.
+
+RF02. El sistema debe permitir consultar los medicamentos e insumos
+registrados junto con la información de su stock.
+
+RF03. El sistema debe permitir actualizar el stock actual de un recurso
+registrado mediante su código.
+
+RF04. El sistema debe identificar automáticamente como crítico un recurso
+cuando su stock actual sea menor o igual que su stock mínimo.
+
+RF05. El sistema debe permitir visualizar únicamente los recursos que se
+encuentren en estado crítico.
+
+RF06. El sistema debe priorizar los recursos críticos según su faltante,
+mostrando primero aquellos que requieran una mayor cantidad de unidades
+para alcanzar el stock mínimo.
+
+RF07. El sistema debe mostrar un resumen con la cantidad total de recursos
+registrados, la cantidad de recursos críticos y el total de unidades
+disponibles.
+
+## Restricciones de diseño
+
+RD01. La aplicación será desarrollada en Java OpenJDK.
+
+RD02. La interfaz será una aplicación de escritorio sencilla desarrollada
+con Java Swing y Apache NetBeans.
+
+RD03. Los recursos se administrarán mediante colecciones de Java en
+memoria, sin utilizar una base de datos en esta versión académica.
+
+RD04. Solo se utilizarán datos ficticios y no se almacenará información
+sensible real de pacientes o trabajadores.
+
+RD05. El identificador ficticio del responsable será protegido antes de
+ser almacenado, evitando conservarlo directamente en texto plano.
+
+RD06. El proyecto utilizará Git y GitHub para mantener el historial de
+versiones mediante commits descriptivos en español.
+
+## Criterios de éxito
+
+CE01. El sistema identifica correctamente como críticos todos los recursos
+cuyo stock actual sea menor o igual que el stock mínimo.
+
+CE02. El sistema permite registrar, consultar y actualizar recursos con
+datos válidos y rechaza entradas inválidas mediante mensajes de error.
+
+CE03. Los recursos críticos son mostrados en orden de prioridad según el
+mayor faltante de unidades.
+
+CE04. El resumen calcula correctamente la cantidad total de recursos,
+cantidad de críticos y total de unidades disponibles.
+
+## Alcance excluido
+
+La versión académica de MedicRural-PE no incluye historias clínicas,
+diagnósticos, recetas médicas, citas, facturación, autenticación avanzada,
+base de datos, servicios web ni integración con múltiples establecimientos.
