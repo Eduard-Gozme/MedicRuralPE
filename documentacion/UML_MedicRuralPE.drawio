@@ -1,0 +1,108 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="medicruralpe-uml-updated">
+    <mxGraphModel dx="1187" dy="694" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="recurso" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=44;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" value="&lt;div&gt;&lt;b&gt;«abstract»&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;RecursoMedico&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="278" width="250" x="550" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="recurso-attrs" parent="recurso" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;- codigo : String&lt;/div&gt;&lt;div&gt;- nombre : String&lt;/div&gt;&lt;div&gt;- stockActual : int&lt;/div&gt;&lt;div&gt;- stockMinimo : int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="72" width="250" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="recurso-methods" parent="recurso" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;+ RecursoMedico(codigo:String, nombre:String, stockActual:int, stockMinimo:int)&lt;/div&gt;&lt;div&gt;+ getCodigo() : String&lt;/div&gt;&lt;div&gt;+ getNombre() : String&lt;/div&gt;&lt;div&gt;+ getStockActual() : int&lt;/div&gt;&lt;div&gt;+ getStockMinimo() : int&lt;/div&gt;&lt;div&gt;+ setNombre(nombre:String) : void&lt;/div&gt;&lt;div&gt;+ setStockActual(stockActual:int) : void&lt;/div&gt;&lt;div&gt;+ setStockMinimo(stockMinimo:int) : void&lt;/div&gt;&lt;div&gt;+ esCritico() : boolean&lt;/div&gt;&lt;div&gt;+ calcularFaltante() : int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="162" width="250" y="116" as="geometry" />
+        </mxCell>
+        <mxCell id="medicamento" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=44;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#6c8ebf;fontSize=14;" value="&lt;div&gt;&lt;b&gt;Medicamento&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="205" width="300" x="210" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="medicamento-attrs" parent="medicamento" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;- presentacion : String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="300" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="medicamento-methods" parent="medicamento" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;+ Medicamento(codigo:String, nombre:String, stockActual:int, stockMinimo:int, presentacion:String)&lt;/div&gt;&lt;div&gt;+ getPresentacion() : String&lt;/div&gt;&lt;div&gt;+ setPresentacion(presentacion:String) : void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="117" width="300" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="insumo" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=44;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#6c8ebf;fontSize=14;" value="&lt;div&gt;&lt;b&gt;InsumoMedico&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="205" width="300" x="510" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="insumo-attrs" parent="insumo" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;- unidadMedida : String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="300" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="insumo-methods" parent="insumo" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;+ InsumoMedico(codigo:String, nombre:String, stockActual:int, stockMinimo:int, unidadMedida:String)&lt;/div&gt;&lt;div&gt;+ getUnidadMedida() : String&lt;/div&gt;&lt;div&gt;+ setUnidadMedida(unidadMedida:String) : void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="117" width="300" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="inventario" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=44;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#6c8ebf;fontSize=14;" value="&lt;div&gt;&lt;b&gt;«Singleton»&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Inventario&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="263" width="280" x="510" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="inventario-attrs" parent="inventario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;- instancia : Inventario {static}&lt;/div&gt;&lt;div&gt;- recursos : List&amp;lt;RecursoMedico&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="280" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="inventario-methods" parent="inventario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;- Inventario()&lt;/div&gt;&lt;div&gt;+ getInstancia() : Inventario {static}&lt;/div&gt;&lt;div&gt;+ registrarRecurso(recurso:RecursoMedico) : void&lt;/div&gt;&lt;div&gt;+ buscarPorCodigo(codigo:String) : RecursoMedico&lt;/div&gt;&lt;div&gt;+ actualizarStock(codigo:String, nuevoStock:int) : void&lt;/div&gt;&lt;div&gt;+ obtenerRecursos() : List&amp;lt;RecursoMedico&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="175" width="280" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="analizador" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=44;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#6c8ebf;fontSize=14;" value="&lt;div&gt;&lt;b&gt;AnalizadorInventario&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="185" width="340" x="130" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="analizador-attrs" parent="analizador" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=9;" value="&lt;div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="340" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="analizador-methods" parent="analizador" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;+ obtenerRecursosCriticos(recursos:List&amp;lt;RecursoMedico&amp;gt;) : List&amp;lt;RecursoMedico&amp;gt;&lt;/div&gt;&lt;div&gt;+ priorizarRecursosCriticos(recursos:List&amp;lt;RecursoMedico&amp;gt;) : List&amp;lt;RecursoMedico&amp;gt;&lt;/div&gt;&lt;div&gt;+ calcularTotalUnidades(recursos:List&amp;lt;RecursoMedico&amp;gt;) : int&lt;/div&gt;&lt;div&gt;+ contarRecursosCriticos(recursos:List&amp;lt;RecursoMedico&amp;gt;) : long&lt;/div&gt;" vertex="1">
+          <mxGeometry height="97" width="340" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="factory" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=44;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#6c8ebf;fontSize=14;" value="&lt;div&gt;&lt;b&gt;«Factory»&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;RecursoFactory&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="370" x="55" y="857.5" as="geometry" />
+        </mxCell>
+        <mxCell id="factory-attrs" parent="factory" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=9;" value="&lt;div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="370" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="factory-methods" parent="factory" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;+ crearMedicamento(codigo:String, nombre:String, stockActual:int, stockMinimo:int, presentacion:String) : RecursoMedico {static}&lt;/div&gt;&lt;div&gt;+ crearInsumo(codigo:String, nombre:String, stockActual:int, stockMinimo:int, unidadMedida:String) : RecursoMedico {static}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="102" width="370" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="frm" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=44;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" value="&lt;div&gt;&lt;b&gt;FrmMedicRural&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="250" width="270" x="100" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="frm-attrs" parent="frm" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;- inventario : Inventario&lt;/div&gt;&lt;div&gt;- analizador : AnalizadorInventario&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="270" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="frm-methods" parent="frm" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;spacingTop=4;overflow=hidden;rotatable=0;whiteSpace=wrap;fontSize=11;" value="&lt;div&gt;+ FrmMedicRural()&lt;/div&gt;&lt;div&gt;- initComponents() : void {generated}&lt;/div&gt;&lt;div&gt;- limpiarCampos() : void&lt;/div&gt;&lt;div&gt;- mostrarInventario() : void&lt;/div&gt;&lt;div&gt;- llenarTabla(recursos:List&amp;lt;RecursoMedico&amp;gt;) : void&lt;/div&gt;&lt;div&gt;- registrarRecurso() : void&lt;/div&gt;&lt;div&gt;- actualizarRecurso() : void&lt;/div&gt;&lt;div&gt;- mostrarRecursosCriticos() : void&lt;/div&gt;&lt;div&gt;- mostrarResumen() : void&lt;/div&gt;&lt;div&gt;+ main(args:String[]) :&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;void {static}&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="162" width="270" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="inherits-med" edge="1" parent="1" source="medicamento" style="endArrow=block;endFill=0;strokeWidth=1.5;orthogonalLoop=1;rounded=0;" target="recurso" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inherits-ins" edge="1" parent="1" source="insumo" style="endArrow=block;endFill=0;strokeWidth=1.5;orthogonalLoop=1;rounded=0;" target="recurso" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory-aggregation" edge="1" parent="1" source="inventario" style="startArrow=diamondThin;startFill=0;endArrow=none;strokeWidth=1.5;rounded=0;" target="recurso" value="0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="frm-inventory" edge="1" parent="1" source="frm" style="endArrow=none;strokeWidth=1.5;rounded=0;" target="inventario" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="frm-analyzer" edge="1" parent="1" source="frm" style="endArrow=none;strokeWidth=1.5;rounded=0;" target="analizador" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="analyzer-resource" edge="1" parent="1" source="analizador" style="dashed=1;endArrow=open;strokeWidth=1.2;rounded=0;" target="recurso" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="frm-factory" edge="1" parent="1" source="frm-methods" style="dashed=1;endArrow=open;strokeWidth=1.2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="factory" value="use">
+          <mxGeometry relative="1" x="0.025" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="360" />
+              <mxPoint x="50" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="factory-med" edge="1" parent="1" source="factory" style="dashed=1;endArrow=open;strokeWidth=1.2;rounded=0;" target="medicamento" value="«create»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="factory-ins" edge="1" parent="1" source="factory" style="dashed=1;endArrow=open;strokeWidth=1.2;rounded=0;" target="insumo" value="«create»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="MedicRural-PE - Diagrama UML actualizado" vertex="1">
+          <mxGeometry height="35" width="800" x="25" y="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
