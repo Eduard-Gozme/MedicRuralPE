@@ -26,8 +26,6 @@ public class InventarioTest {
                 "Tabletas"
         );
         
-        primerRecurso.asignarResponsable("RESP_TEST_01");
-        recursoDuplicado.asignarResponsable("RESP_TEST_02");
         
         inventario.registrarRecurso(primerRecurso);
 

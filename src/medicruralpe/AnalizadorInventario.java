@@ -11,8 +11,7 @@ public class AnalizadorInventario {
     }
 
     public List<RecursoMedico> priorizarRecursosCriticos(List<RecursoMedico> recursos) {
-        return recursos.stream()
-                .filter(recurso -> recurso.esCritico())
+        return obtenerRecursosCriticos(recursos).stream()
                 .sorted((recurso1, recurso2) ->
                     Integer.compare(
                         recurso2.calcularFaltante(),

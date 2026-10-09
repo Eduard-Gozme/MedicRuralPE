@@ -6,6 +6,7 @@ package medicruralpe;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 
 public class FrmMedicRural extends javax.swing.JFrame {
@@ -27,19 +28,19 @@ public class FrmMedicRural extends javax.swing.JFrame {
         txtStockMinimo.setText("");
         txtDetalle.setText("");
         cmbTipo.setSelectedIndex(0);
-        txtResponsable.setText("");
     }
     
     
     private void mostrarInventario() {
+        llenarTabla(inventario.obtenerRecursos());
+    }
 
+    private void llenarTabla(List<RecursoMedico> recursos) {
         DefaultTableModel modelo =
                 (DefaultTableModel) tblInventario.getModel();
-
         modelo.setRowCount(0);
 
-        for (RecursoMedico recurso : inventario.obtenerRecursos()) {
-
+        for (RecursoMedico recurso : recursos) {
             String tipo;
             String detalle;
 
@@ -51,14 +52,7 @@ public class FrmMedicRural extends javax.swing.JFrame {
                 detalle = ((InsumoMedico) recurso).getUnidadMedida();
             }
 
-            String estado;
-
-            if (recurso.esCritico()) {
-                estado = "CRÍTICO";
-            } else {
-                estado = "NORMAL";
-            }
-
+            String estado = recurso.esCritico() ? "CRÍTICO" : "NORMAL";
             modelo.addRow(new Object[]{
                 recurso.getCodigo(),
                 recurso.getNombre(),
@@ -70,7 +64,8 @@ public class FrmMedicRural extends javax.swing.JFrame {
             });
         }
     }
-    
+
+
     private void registrarRecurso() {
 
         try {
@@ -108,11 +103,6 @@ public class FrmMedicRural extends javax.swing.JFrame {
                         detalle
                 );
             }
-            String identificadorResponsable =
-                txtResponsable.getText().trim();
-
-            recurso.asignarResponsable(identificadorResponsable);
-
             inventario.registrarRecurso(recurso);
 
             mostrarInventario();
@@ -191,54 +181,16 @@ public class FrmMedicRural extends javax.swing.JFrame {
     }
     
     private void mostrarRecursosCriticos() {
-
-        DefaultTableModel modelo =
-                (DefaultTableModel) tblInventario.getModel();
-
-        modelo.setRowCount(0);
-
-        for (RecursoMedico recurso :
-                analizador.priorizarRecursosCriticos(
-                        inventario.obtenerRecursos()
-                )) {
-
-            String tipo;
-            String detalle;
-
-            if (recurso instanceof Medicamento) {
-                tipo = "Medicamento";
-                detalle = ((Medicamento) recurso).getPresentacion();
-            } else {
-                tipo = "Insumo médico";
-                detalle = ((InsumoMedico) recurso).getUnidadMedida();
-            }
-
-            modelo.addRow(new Object[]{
-                recurso.getCodigo(),
-                recurso.getNombre(),
-                tipo,
-                recurso.getStockActual(),
-                recurso.getStockMinimo(),
-                detalle,
-                "CRÍTICO"
-            });
-        }
+        llenarTabla(analizador.priorizarRecursosCriticos(
+                inventario.obtenerRecursos()));
     }
-    
+
     private void mostrarResumen() {
+        List<RecursoMedico> recursos = inventario.obtenerRecursos();
 
-        int totalRecursos =
-                inventario.obtenerRecursos().size();
-
-        long recursosCriticos =
-                analizador.contarRecursosCriticos(
-                        inventario.obtenerRecursos()
-                );
-
-        int totalUnidades =
-                analizador.calcularTotalUnidades(
-                        inventario.obtenerRecursos()
-                );
+        int totalRecursos = recursos.size();
+        long recursosCriticos = analizador.contarRecursosCriticos(recursos);
+        int totalUnidades = analizador.calcularTotalUnidades(recursos);
 
         String mensaje =
                 "=== RESUMEN DEL INVENTARIO ===\n\n"
@@ -253,7 +205,7 @@ public class FrmMedicRural extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
-    
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -280,8 +232,6 @@ public class FrmMedicRural extends javax.swing.JFrame {
         btnVerTodos = new javax.swing.JButton();
         btnVerCriticos = new javax.swing.JButton();
         btnResumen = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        txtResponsable = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MedicRural-PE");
@@ -338,8 +288,6 @@ public class FrmMedicRural extends javax.swing.JFrame {
         btnResumen.setText("Ver resumen");
         btnResumen.addActionListener(this::btnResumenActionPerformed);
 
-        jLabel8.setText("ID responsable ficticio:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -361,29 +309,23 @@ public class FrmMedicRural extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbTipo, 0, 577, Short.MAX_VALUE)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtStockActual)
                             .addComponent(txtStockMinimo)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtDetalle)))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                         .addComponent(btnVerCriticos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(133, 133, 133)
                         .addComponent(btnResumen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -417,9 +359,7 @@ public class FrmMedicRural extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(txtDetalle)
-                    .addComponent(txtResponsable)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtDetalle))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -445,7 +385,7 @@ public class FrmMedicRural extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResumenActionPerformed
-        mostrarResumen();        // TODO add your handling code here:
+        mostrarResumen();        
     }//GEN-LAST:event_btnResumenActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -453,15 +393,15 @@ public class FrmMedicRural extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        actualizarRecurso();        // TODO add your handling code here:
+        actualizarRecurso();        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTodosActionPerformed
-        mostrarInventario();        // TODO add your handling code here:
+        mostrarInventario();        
     }//GEN-LAST:event_btnVerTodosActionPerformed
 
     private void btnVerCriticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCriticosActionPerformed
-        mostrarRecursosCriticos();        // TODO add your handling code here:
+        mostrarRecursosCriticos();        
     }//GEN-LAST:event_btnVerCriticosActionPerformed
 
     /**
@@ -504,13 +444,11 @@ public class FrmMedicRural extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblInventario;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDetalle;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtResponsable;
     private javax.swing.JTextField txtStockActual;
     private javax.swing.JTextField txtStockMinimo;
     // End of variables declaration//GEN-END:variables

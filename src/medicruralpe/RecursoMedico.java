@@ -1,7 +1,6 @@
 package medicruralpe;
 
 public abstract class RecursoMedico {
-    private String responsableProtegido;
     private String codigo;
     private String nombre;
     private int stockActual;
@@ -61,14 +60,6 @@ public abstract class RecursoMedico {
         }
 
         this.stockMinimo = stockMinimo;
-    }
-    public void asignarResponsable(String identificador) {
-        this.responsableProtegido =
-                ProtectorDatos.protegerIdentificador(identificador);
-    }
-
-    public String getResponsableProtegido() {
-        return responsableProtegido;
     }
     
     
